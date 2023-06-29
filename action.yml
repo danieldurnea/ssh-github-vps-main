@@ -19,7 +19,7 @@ runs:
     - name: 'Run Docker container'
       shell: bash
       run: docker run docker.io/library/ssh4me
-      run: docker update ssh4me --cpuset-cpus "4" --memory "4g" $(docker ps | awk 'NR>1 {print $1}')
+  
 
 branding:
   icon: 'terminal'
