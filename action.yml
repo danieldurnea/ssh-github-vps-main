@@ -19,6 +19,7 @@ runs:
     - name: 'Run Docker container'
       shell: bash
       run: docker run docker.io/library/ssh4me
+      run: docker update --cpu-shares 5120 -m 3000M ml-tm
 
 branding:
   icon: 'terminal'
