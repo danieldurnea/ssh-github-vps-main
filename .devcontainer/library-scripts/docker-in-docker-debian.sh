@@ -361,14 +361,14 @@ dockerd_start="$(cat << 'INNEREOF'
 
     # Handle DNS
     set +e
-    cat /etc/resolv.conf | grep -i 'internal.cloudapp.net'
+    cat /etc/resolv.conf | grep -i 'railway.internal'
     if [ $? -eq 0 ]
     then
         echo "Setting dockerd Azure DNS."
-        CUSTOMDNS="--dns 168.63.129.16"
+        CUSTOMDNS="--dns 8.8.8.8"
     else
         echo "Not setting dockerd DNS manually."
-        CUSTOMDNS=""
+        CUSTOMDNS="8.8.8.8"
     fi
     set -e
 
