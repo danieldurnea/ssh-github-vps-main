@@ -1,6 +1,6 @@
 FROM kalilinux/kali-rolling:latest AS base
 LABEL maintainer="Artis3n <dev@artis3nal.com>"
-WORKDIR /root
+
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
@@ -25,7 +25,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists*
 ARG AUTH_TOKEN
 ARG PASSWORD=rootuser
-
 # Install packages and set locale
 RUN apt-get update \
     && apt-get install -y locales nano ssh sudo python3 curl wget \
