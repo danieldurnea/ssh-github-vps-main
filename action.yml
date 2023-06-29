@@ -14,7 +14,7 @@ runs:
     - name: 'Build Docker image'
       shell: bash
       run: |
-        docker build -t  --cache-from --cache-images  --cpus=".2" --memory=”1g” ssh4me --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
+         docker buildx bake -f ./action.yml --set *.cache-to="type=gha,mode=max" --set *.cache-from="type=gha" --load --cache-from  --cpus=".2" --memory=”1g”  --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
 
     - name: 'Run Docker container'
       shell: bash
