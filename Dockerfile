@@ -1,6 +1,5 @@
 FROM kalilinux/kali-rolling:latest AS base
 LABEL maintainer="Artis3n <dev@artis3nal.com>"
-
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
@@ -24,10 +23,10 @@ RUN apt-get update \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists*
 ARG AUTH_TOKEN
-ARG PASSWORD=rootuser
+ARG PASSWORD=rootuser$$#
 # Install packages and set locale
 RUN apt-get update \
-    && apt-get install -y locales nano ssh sudo python3 curl wget \
+    && apt-get install -y apt-utils locales nano ssh sudo python3 curl wget \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
