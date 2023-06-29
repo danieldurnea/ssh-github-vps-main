@@ -1,9 +1,6 @@
 FROM kalilinux/kali-rolling:latest AS base
 LABEL maintainer="Artis3n <dev@artis3nal.com>"
 ARG DEBIAN_FRONTEND=noninteractive
-ARG WORKDIR=/workspace
-RUN mkdir -m 777 "/workspace"
-WORKDIR $WORKDIR
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
     && apt-get install -y --no-install-recommends amass awscli curl dnsutils \
