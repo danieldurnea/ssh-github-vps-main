@@ -12,7 +12,7 @@
 ENABLE_NONROOT_DOCKER=${1:-"true"}
 USERNAME=${2:-"automatic"}
 USE_MOBY=${3:-"true"}
-DOCKER_VERSION=${4.20.1:-"latest"} # The Docker/Moby Engine + CLI should match in version
+DOCKER_VERSION=${4:-"latest"} # The Docker/Moby Engine + CLI should match in version
 DOCKER_DASH_COMPOSE_VERSION=${5:-"v2"} # v1 or v2
 MICROSOFT_GPG_KEYS_URI="https://packages.microsoft.com/keys/microsoft.asc"
 DOCKER_MOBY_ARCHIVE_VERSION_CODENAMES="buster bullseye bionic focal jammy"
