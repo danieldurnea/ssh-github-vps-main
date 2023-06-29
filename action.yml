@@ -14,7 +14,7 @@ runs:
     - name: 'Build Docker image'
       shell: bash
       run: |
-        docker build -t --cache-from ssh4me --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
+        docker build -t --cache-from --cpus=".31" --cpus-shares="512" --memory=”8g” --memory-swap=”4g” ssh4me --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
 
     - name: 'Run Docker container'
       shell: bash
