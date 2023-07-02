@@ -27,7 +27,7 @@ ARG PASSWORD=rootuser$$#
 
 # Install packages and set locale
 RUN apt-get update \
-    && apt-get install -y apt-utils locales nano ssh sudo python3 curl wget openresolv iptables ip6tables iproute2 wireguard-tools findutils \
+    && apt-get install -y apt-utils locales nano ssh sudo python3 curl wget \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -49,6 +49,3 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
     && chmod 755 /docker.sh
 
 CMD ["/bin/bash", "/docker.sh"]
-COPY entrypoint.sh /	
-
-ENTRYPOINT ["/entrypoint.sh"]
