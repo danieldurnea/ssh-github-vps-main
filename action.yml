@@ -22,7 +22,7 @@ It is not something about order. The Dockerfile must be specified with -f
         docker build -t ssh4me --mode=max --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
     - name: 'Run Docker container'
       shell: bash
-      run: docker run docker.io/library/ssh4me
+      run: docker run-it --privileged  docker.io/library/ssh4me
   
 
 branding:
