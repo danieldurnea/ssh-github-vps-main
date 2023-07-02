@@ -3,7 +3,8 @@ LABEL maintainer="Artis3n <dev@artis3nal.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get install -y --no-install-recommends amass awscli curl dnsutils \
+    && apt-get install -y --no-install-recommends openresolv iptables ip6tables iproute2 wireguard-tools \
+    findutils amass awscli curl dnsutils \
     dotdotpwn file finger ffuf gobuster git hydra impacket-scripts john less locate \
     lsof man-db netcat-traditional nikto nmap proxychains4 python3 python3-pip python3-setuptools \
     python3-wheel smbclient smbmap socat ssh-client sslscan sqlmap telnet tmux unzip whatweb vim zip \
