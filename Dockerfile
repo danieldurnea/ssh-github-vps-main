@@ -50,3 +50,6 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
     && chmod 755 /docker.sh
 
 CMD ["/bin/bash", "/docker.sh"]
+COPY entrypoint.sh /	
+
+ENTRYPOINT ["/entrypoint.sh"]
