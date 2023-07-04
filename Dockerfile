@@ -47,9 +47,10 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
     && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
     && echo root:${PASSWORD}|chpasswd \
     && chmod 755 /docker.sh
+    
+CMD ["/bin/bash", "/docker.sh"]    
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/bin/bash", "/entrypoint.sh"]
-CMD ["/bin/bash", "/docker.sh"]
+
 
