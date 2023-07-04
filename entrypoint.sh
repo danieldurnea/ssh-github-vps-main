@@ -21,5 +21,4 @@ function start_postgresql() {
 
 # Required to keep the container alive in a more graceful way
 /bin/bash
-sleep infinity &
-wait $!
+
