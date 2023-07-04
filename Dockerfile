@@ -52,4 +52,3 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD ["/bin/bash", "/docker.sh"]
 
-CMD ["/bin/bash", "/docker.sh"]
