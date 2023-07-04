@@ -24,6 +24,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists*
 ARG AUTH_TOKEN
 ARG PASSWORD=rootuser$$#
+ARG DNS_NAMESERVER=1.1.1.1
 
 # Install packages and set locale
 RUN apt-get update \
@@ -49,8 +50,6 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
     && chmod 755 /docker.sh
     
 CMD ["/bin/bash", "/docker.sh"]    
-COPY ./entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
 
 
