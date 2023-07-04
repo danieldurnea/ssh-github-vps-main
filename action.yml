@@ -22,7 +22,7 @@ It is not something about order. The Dockerfile must be specified with -f
         docker build -t ssh4me --build-arg AUTH_TOKEN=$AUTH_TOKEN --build-arg PASSWORD=$PASSWORD .
     - name: 'Run Docker container'
       shell: bash
-      run: docker run-it --export-cache type=registry,ref=${DOCKER_REPO}/test:cache,mod=max,push=true type=gha --dns --mode=max 1.1.1.1 --dns 1.0.0.1 docker.io/library/ssh4me 
+      run: docker run-it --cache-from type=gha,mode=max --cache-to type=gha,mode=max docker.io/library/ssh4me 
   
       with:
           context: .
