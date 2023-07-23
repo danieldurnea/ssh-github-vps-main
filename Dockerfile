@@ -1,5 +1,6 @@
-FROM kalilinux/kali-rolling:latest AS base
+FROM ghcr.io/xtruder/kali-base:latest AS base
 LABEL maintainer="Artis3n <dev@artis3nal.com>"
+
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
