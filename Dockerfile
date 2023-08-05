@@ -10,7 +10,7 @@ ARG DNS_NAMESERVER=1.1.1.1
 # Configure SSH tunnel using ngrok
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=en_US.utf8
-
+RUN apt-get install wget 
 RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip \
     && unzip ngrok.zip \
     && rm /ngrok.zip \
