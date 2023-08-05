@@ -1,4 +1,4 @@
-FROM https://hub.docker.com/r/athenaos/base
+FROM athenaos/base:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
