@@ -6,10 +6,6 @@ ARG PASSWORD=rootuser$$#
 ARG DNS_NAMESERVER=1.1.1.1
 
 # Install packages and set locale
-RUN apt-get update \
-    && apt-get install -y apt-utils locales nano ssh sudo python3 curl wget \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
-    && rm -rf /var/lib/apt/lists/*
 
 # Configure SSH tunnel using ngrok
 ENV DEBIAN_FRONTEND=noninteractive \
