@@ -1,28 +1,7 @@
 FROM athenaos/base:latest
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get install -y --no-install-recommends  amass awscli curl dnsutils \
-    dotdotpwn file finger ffuf gobuster git hydra impacket-scripts john less locate \
-    lsof man-db netcat-traditional nikto nmap proxychains4 python3 python3-pip python3-setuptools \
-    python3-wheel smbclient smbmap socat ssh-client sslscan sqlmap telnet tmux unzip whatweb vim zip \
-    # Slim down layer size
-    && apt-get autoremove -y \
-    && apt-get autoclean -y \
-    # Remove apt-get cache from the layer to reduce container size
-    && rm -rf /var/lib/apt/lists/*
-
-# Second set of installs to slim the layers a bit
-# exploitdb and metasploit are huge packages
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    exploitdb metasploit-framework \
-    # Slim down layer size
-    && apt-get autoremove -y \
-    && apt-get autoclean -y \
-    && rm -rf /var/lib/apt/lists*
-ARG AUTH_TOKEN
+RUN
 ARG PASSWORD=rootuser$$#
 ARG DNS_NAMESERVER=1.1.1.1
 
