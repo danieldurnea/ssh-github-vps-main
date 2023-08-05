@@ -1,5 +1,4 @@
-FROM ghcr.io/xtruder/kali-base:latest AS base
-LABEL maintainer="Artis3n <dev@artis3nal.com>"
+FROM https://hub.docker.com/r/athenaos/base
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
