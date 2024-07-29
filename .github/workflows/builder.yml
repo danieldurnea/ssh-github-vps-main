@@ -3,21 +3,16 @@ on:
   workflow_dispatch:
 jobs:
   build-and-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run SSH4Me Action
         uses: Jisan09/SSH4Me@main
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          build-and-run:
-  cache-from: type=local,src=/tmp/.buildx-cache
-           build-and-run:
-  cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-
-    
+          
 
 
