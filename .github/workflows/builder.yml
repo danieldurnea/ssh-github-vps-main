@@ -1,13 +1,6 @@
 name: 'Run SSH4Me'
 on:
   workflow_dispatch:
-uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
 jobs:
   build-and-run:
     runs-on: ubuntu-latest
@@ -20,8 +13,10 @@ jobs:
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          build-and-run:
   cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+           build-and-run:
+  cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
 
     
 
