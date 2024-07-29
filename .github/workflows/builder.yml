@@ -7,12 +7,7 @@ jobs:
       labels: ubuntu-20.04-16core
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      - name: Run SSH4Me Action
+        name: Run SSH4Me Action
         uses: Jisan09/SSH4Me@main
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
