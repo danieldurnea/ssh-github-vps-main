@@ -1,15 +1,17 @@
-name: learn-github-actions
-on: [push]
+name: 'Run SSH4Me'
+on:
+  workflow_dispatch:
+
 jobs:
-  check-bats-version:
+  build-and-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        name: Run SSH4Me Action
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run SSH4Me Action
         uses: Jisan09/SSH4Me@main
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           PASSWORD: ${{ secrets.PASSWORD }}
-          
-
 
