@@ -3,8 +3,6 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
-      group: ubuntu-runners
-      labels: ubuntu-20.04-16core
     steps:
       - uses: actions/checkout@v4
         name: Run SSH4Me Action
