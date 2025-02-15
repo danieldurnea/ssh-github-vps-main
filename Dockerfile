@@ -34,13 +34,6 @@ ENV NGROK_TOKEN=${NGROK_TOKEN}
 
 
 # Download and unzip ngrok
-RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3.5-stable-linux-amd64.zip > /dev/null 2>&1
-RUN unzip ngrok.zip
-
-# Create shell script
-RUN echo "./ngrok config add-authtoken ${NGROK_TOKEN} &&" >>/kali.sh
-RUN echo "./ngrok tcp 22 &>/dev/null &" >>/kali.sh
-
 
 # Create directory for SSH daemon's runtime files
 RUN mkdir /run/sshd
