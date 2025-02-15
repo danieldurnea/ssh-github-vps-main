@@ -2,13 +2,13 @@ FROM ghcr.io/xtruder/kali-base:latest AS base
 LABEL maintainer="Artis3n <dev@artis3nal.com>"
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+# Install packages and set locale
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends apt-utils \
-    && apt-get install -y --no-install-recommends amass awscli curl dnsutils \
-    dotdotpwn file finger ffuf gobuster kali-root-login git hydra impacket-scripts john less locate \
-    lsof man-db netcat-traditional nikto nmap proxychains4 python3 python3-pip python3-setuptools \
-    python3-wheel smbclient smbmap socat ssh-client sslscan sqlmap telnet tmux unzip whatweb vim zip \
-    # Slim down layer size
+    && apt-get install -y locales nano unzip ssh sudo python3 curl wget \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    && rm -rf /var/lib/apt/lists/*
+
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     # Remove apt-get cache from the layer to reduce container size
