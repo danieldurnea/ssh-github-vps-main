@@ -4,8 +4,6 @@ LABEL maintainer="Artis3n <dev@artis3nal.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Install packages and set locale
-    # Remove apt-get cache from the layer to reduce container size
-    && rm -rf /var/lib/apt/lists/*
 
 # Second set of installs to slim the layers a bit
 # exploitdb and metasploit are huge packages
