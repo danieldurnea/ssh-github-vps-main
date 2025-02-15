@@ -19,7 +19,5 @@ jobs:
       with:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
         SSH_PASS: ${{ secrets.SSH_PASS }}
-          outputs: type=image,name=target
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+      
    
