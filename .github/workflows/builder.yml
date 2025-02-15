@@ -15,16 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install cosign
-        if: github.event_name != 'pull_request'
-        uses: sigstore/cosign-installer@v3.7.0
-        with:
-          cosign-release: 'v2.4.1'
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3.2.0
-        with:
-          images: quay.io/ydrag0n/pterodactyl-vps-egg
           
       - name: Build and push
         id: build-and-push
