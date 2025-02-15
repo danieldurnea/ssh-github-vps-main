@@ -346,7 +346,6 @@ RUN git clone --depth 1 https://gitlab.com/kalilinux/packages/webshells.git /usr
   ln -s /usr/share/webshells $ADDONS/webshells
 
 # Copy the startup script across
-COPY ./startup.sh /startup.sh
 
 # ------------------------------
 # --- Config ---
