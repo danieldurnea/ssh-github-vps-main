@@ -1,16 +1,6 @@
   build:
     runs-on: ubuntu-latest
     steps:
-
-          context: .
-          file: Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/riscv64
-          push: true
-          tags: quay.io/ydrag0n/pterodactyl-vps-egg:latest,quay.io/ydrag0n/pterodactyl-vps-egg:${{ github.ref_name }}
-          labels: ${{ steps.meta.outputs.labels }}
-          outputs: type=image,name=target
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: Run SSH4Me Action
         uses: Jisan09/SSH4Me@main
         env:
