@@ -32,8 +32,6 @@ ARG Password
 ENV Password=${Password}
 ENV NGROK_TOKEN=${NGROK_TOKEN}
 
-# Install ssh, wget, and unzip
-RUN apt install ssh golang wget unzip -y > /dev/null 2>&1
 
 # Download and unzip ngrok
 RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3.5-stable-linux-amd64.zip > /dev/null 2>&1
