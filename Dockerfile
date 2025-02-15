@@ -1,6 +1,5 @@
 # sd
-FROM kalilinux/kali-rolling:latest AS base
-LABEL maintainer="Artis3n <dev@artis3nal.com>"
+FROM ubuntu
 ARG AUTH_TOKEN
 ARG PASSWORD
 ARG DEBIAN_FRONTEND=noninteractive
