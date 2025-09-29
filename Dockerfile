@@ -1,5 +1,5 @@
 # sd
-FROM ubuntu
+FROM ubuntu:24.10
 ARG AUTH_TOKEN
 ARG PASSWORD
 ARG DEBIAN_FRONTEND=noninteractive
