@@ -1,22 +1,16 @@
----
-name: Dispatch a SSH session
-
+name: 'Run SSH4Me'
 on:
   workflow_dispatch:
-    inputs:
-      os:
-        description: 'Leave only desired OS in the field'
-        required: true
-        default: ubuntu-latest
+
 jobs:
-  start_ssh_session:
-    runs-on: ${{ github.event.inputs.os }}
-    name: Start the SSH session
+  build-and-run:
+    runs-on: ubuntu-latest
     steps:
-    - name: Start SSH session
-      uses: luchihoratiu/debug-via-ssh@main
-      with:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-        SSH_PASS: ${{ secrets.SSH_PASS }}
-      
-   
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run SSH4Me Action
+        uses: Jisan09/SSH4Me@main
+        env:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          SSH_PASS: ${{ secrets.SSH_PASS }}
