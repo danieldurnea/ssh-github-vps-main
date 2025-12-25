@@ -1,6 +1,6 @@
 FROM ubuntu
-ARG AUTH_TOKEN
-ARG PASSWORD
+ARG NGROK_AUTH_TOKEN
+ARG SSH_PASS
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create working dirs
