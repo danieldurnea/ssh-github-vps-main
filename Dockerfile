@@ -1,20 +1,6 @@
-# sd
 FROM ubuntu
 ARG AUTH_TOKEN
 ARG PASSWORD
-ARG DEBIAN_FRONTEND=noninteractive
-
-LABEL maintainer="Matt McNamee"
-
-# Environment Variables
-ENV HOME=/root
-ENV TOOLS="/opt"
-ENV ADDONS="/usr/share/addons"
-ENV WORDLISTS="/usr/share/wordlists"
-ENV GO111MODULE=on
-ENV GOROOT=/usr/local/go
-ENV GOPATH=/go
-ENV PATH=${HOME}/:${GOPATH}/bin:${GOROOT}/bin:${PATH}
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Create working dirs
@@ -31,12 +17,37 @@ RUN apt-get update \
     && apt-get install -y locales nano unzip ssh sudo python3 curl wget \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN apt-get update -yq && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq \
+    openssh-server \
+    openssh-client \
+    curl \
+    sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
+# Prepare SSH configuration
+RUN mkdir -p /run/sshd && \
+    # Remove any existing PasswordAuthentication lines
+    sed -i '/PasswordAuthentication/d' /etc/ssh/sshd_config && \
+    echo "PermitRootLogin no" >> /etc/ssh/sshd_config && \
+    echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config && \
+    echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
 
-# ------------------------------
-# --- Finished ---
-# ------------------------------
+# Create user with password and give sudo access
+RUN useradd -m -s /bin/bash $USER && \
+    echo "$USER:$PASSWORD" | chpasswd && \
+    usermod -aG sudo $USER && \
+    chown -R $USER:$USER /home/$USER && \
+    echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Start up commands
-ENTRYPOINT ["bash", "/docker-to-bash.sh"]
-CMD ["/bin/zsh"]
+# Copy autoconnect/start script (if you have one)
+COPY start.sh /start.sh
+RUN chmod +x /start.sh && chown $USER:$USER /start.sh
+
+# Expose SSH port
+EXPOSE 22
+
+# Start SSH daemon
+CMD ["/start.sh"]
