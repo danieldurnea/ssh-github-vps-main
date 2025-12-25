@@ -5,7 +5,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Create working dirs
 WORKDIR /root
-RUN mkdir $WORDLISTS && mkdir $ADDONS
 
 # ------------------------------
 # --- Common Dependencies ---
